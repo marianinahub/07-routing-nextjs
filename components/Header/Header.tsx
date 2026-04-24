@@ -15,7 +15,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href="/notes" aria-label="Notes">
+            <Link href="/notes/filter/all" aria-label="Notes">
               Notes
             </Link>
           </li>
