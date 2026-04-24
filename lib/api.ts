@@ -25,13 +25,22 @@ const noteHubApi = axios.create({
 export const fetchNotes = async (
   page: number,
   search = "",
+  tag?: NoteTag,
 ): Promise<FetchNotesResponse> => {
+  const params: Record<string, string | number> = {
+    page,
+    perPage: 12,
+  };
+
+  if (search) {
+    params.search = search;
+  }
+  if (tag) {
+    params.tag = tag;
+  }
+
   const response = await noteHubApi.get<FetchNotesResponse>("/notes", {
-    params: {
-      page,
-      perPage: 12,
-      search,
-    },
+    params,
   });
 
   return response.data;
